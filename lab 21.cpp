@@ -44,22 +44,24 @@ class Goat {
             "Smoky Silver",
             "Chocolate Brown",
             "Ivory",
+            "Sandy Cream",
         };
 
     public:
         Goat(){
+            // Generates a random number using entropy
             random_device rd;
             uniform_int_distribution<int> dist(0);
-
             srand(dist(rd));
 
-            cout << rand() % NAME_COUNT << endl;
-            name = names[rand() % NAME_COUNT]; // random name from names list
-            cout << rand() % COLOR_COUNT << endl;
-            color = colors[rand() % COLOR_COUNT]; // random color from colors list
+            int nameIndex = rand() % NAME_COUNT;
+            int colorIndex = rand() % COLOR_COUNT;
 
-            // Gives (0-19) + 1
-            age = rand()%20 + 1;
+            name = names[nameIndex]; // random name from names list
+            color = colors[colorIndex]; // random color from colors list
+
+            age = rand() % 20 + 1;
+
         }
 
         Goat(int a, string n, string c){
