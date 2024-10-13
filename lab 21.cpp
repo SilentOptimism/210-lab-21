@@ -49,11 +49,6 @@ class Goat {
 
     public:
         Goat(){
-            // Generates a random number using entropy
-            random_device rd;
-            uniform_int_distribution<int> dist(0);
-            srand(dist(rd));
-
             int nameIndex = rand() % NAME_COUNT;
             int colorIndex = rand() % COLOR_COUNT;
 
@@ -176,7 +171,9 @@ public:
 */
     void print() {
         Node* current = head;
-        if (!current) return;
+        if (!current){
+            cout << "Empty List" << endl;
+        } 
 
         cout << "Backward:" << endl;
 
@@ -193,7 +190,9 @@ public:
 
     void print_reverse() {
         Node* current = tail;
-        if (!current) return;
+        if (!current){
+            cout << "Empty List" << endl;
+        } 
 
         cout << "Forward:" << endl;
 
@@ -221,6 +220,7 @@ public:
 
 // Driver program
 int main() {
+    srand(0);
     DoublyLinkedList list;
 
     int size = rand() % (MAX_LS-MIN_LS+1) + MIN_LS;
