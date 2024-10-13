@@ -1,7 +1,10 @@
 #include <iostream>
+
 using namespace std;
 
 const int MIN_NR = 10, MAX_NR = 99, MIN_LS = 5, MAX_LS = 20;
+
+const int NAME_COUNT = 15, COLOR_COUNT = 15;
 
 class DoublyLinkedList {
 private:
@@ -129,23 +132,93 @@ public:
     }
 };
 
+class Goat {
+    private:
+        int age;
+        string name;
+        string color;
+        string names[NAME_COUNT] = {
+            "Nanny McGoat",
+            "Billy the Kid",
+            "Butterscotch",
+            "Clover",
+            "Scruffy",
+            "Luna",
+            "Pippin",
+            "Marzipan",
+            "Tofu",
+            "Biscuit",
+            "Fig",
+            "Buckaroo",
+            "Willow",
+            "Peaches",
+            "Ziggy"
+        };
+        string colors[COLOR_COUNT] = {
+            "Snow White",
+            "Midnight Black",
+            "Chestnut Brown",
+            "Sandy Beige",
+            "Slate Gray",
+            "Honey Gold",
+            "Spotted Black and White",
+            "Rusty Red",
+            "Cloudy Gray",
+            "Cream",
+            "Hazel",
+            "Smoky Silver",
+            "Chocolate Brown",
+            "Ivory",
+        };
+
+    public:
+        Goat(){
+            srand(time(nullptr));
+
+            int nameTest = 0;
+            int colorTest = 0;
+
+            nameTest = rand() % NAME_COUNT;
+            colorTest = rand() % COLOR_COUNT;
+
+            cout << colorTest << endl;
+            cout << nameTest << endl;
+
+
+            name = names[rand() % NAME_COUNT];
+            
+            color = colors[rand() % COLOR_COUNT];
+        }
+
+        string getName() {return name;}
+        string getColor() {return color;}
+
+};
+
 // Driver program
 int main() {
-    DoublyLinkedList list;
-    int size = rand() % (MAX_LS-MIN_LS+1) + MIN_LS;
+    Goat bahh;
+    cout << bahh.getColor() << endl;
 
-    for (int i = 0; i < size; ++i)
-        list.push_back(rand() % (MAX_NR-MIN_NR+1) + MIN_NR);
-    cout << "List forward: ";
-    list.print();
+    cout << bahh.getName() << endl;
 
-    cout << "List backward: ";
-    list.print_reverse();
+    /*
+        DoublyLinkedList list;
 
-    cout << "Deleting list, then trying to print.\n";
-    list.~DoublyLinkedList();
-    cout << "List forward: ";
-    list.print();
+        int size = rand() % (MAX_LS-MIN_LS+1) + MIN_LS;
 
-    return 0;
+        for (int i = 0; i < size; ++i)
+            list.push_back(rand() % (MAX_NR-MIN_NR+1) + MIN_NR);
+        cout << "List forward: ";
+        list.print();
+
+        cout << "List backward: ";
+        list.print_reverse();
+
+        cout << "Deleting list, then trying to print.\n";
+        list.~DoublyLinkedList();
+        cout << "List forward: ";
+        list.print();
+    */
+       return 0;
 }
