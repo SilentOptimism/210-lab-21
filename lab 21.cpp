@@ -6,13 +6,72 @@ const int MIN_NR = 10, MAX_NR = 99, MIN_LS = 5, MAX_LS = 20;
 
 const int NAME_COUNT = 15, COLOR_COUNT = 15;
 
+class Goat {
+    private:
+        int age;
+        string name;
+        string color;
+        string names[NAME_COUNT] = {
+            "Nanny McGoat",
+            "Billy the Kid",
+            "Butterscotch",
+            "Clover",
+            "Scruffy",
+            "Luna",
+            "Pippin",
+            "Marzipan",
+            "Tofu",
+            "Biscuit",
+            "Fig",
+            "Buckaroo",
+            "Willow",
+            "Peaches",
+            "Ziggy"
+        };
+        string colors[COLOR_COUNT] = {
+            "Snow White",
+            "Midnight Black",
+            "Chestnut Brown",
+            "Sandy Beige",
+            "Slate Gray",
+            "Honey Gold",
+            "Spotted Black and White",
+            "Rusty Red",
+            "Cloudy Gray",
+            "Cream",
+            "Hazel",
+            "Smoky Silver",
+            "Chocolate Brown",
+            "Ivory",
+        };
+
+    public:
+        Goat(){
+            // Randomizes the seed
+            srand(time(nullptr));
+
+            name = names[rand() % NAME_COUNT]; // random name from names list
+            color = colors[rand() % COLOR_COUNT]; // random color from colors list
+        }
+
+        Goat(int a, string n, string c){
+            age = a;
+            name = n;
+            color = c;
+        }
+
+        string getName() {return name;}
+        string getColor() {return color;}
+
+};
+
 class DoublyLinkedList {
 private:
     struct Node {
-        int data;
+        Goat data;
         Node* prev;
         Node* next;
-        Node(int val, Node* p = nullptr, Node* n = nullptr) {
+        Node(Goat val, Node* p = nullptr, Node* n = nullptr) {
             data = val; 
             prev = p;
             next = n;
@@ -26,7 +85,7 @@ public:
     // constructor
     DoublyLinkedList() { head = nullptr; tail = nullptr; }
 
-    void push_back(int value) {
+    void push_back(Goat value) {
         Node* newNode = new Node(value);
         if (!tail)  // if there's no tail, the list is empty
             head = tail = newNode;
@@ -37,7 +96,7 @@ public:
         }
     }
 
-    void push_front(int value) {
+    void push_front(Goat value) {
         Node* newNode = new Node(value);
         if (!head)  // if there's no head, the list is empty
             head = tail = newNode;
@@ -48,7 +107,7 @@ public:
         }
     }
 
-    void insert_after(int value, int position) {
+    void insert_after(Goat value, int position) {
         if (position < 0) {
             cout << "Position must be >= 0." << endl;
             return;
@@ -79,7 +138,7 @@ public:
         temp->next = newNode;
     }
 
-    void delete_node(int value) {
+    void delete_node(Goat value) {
         if (!head) return; // Empty list
 
         Node* temp = head;
@@ -132,75 +191,13 @@ public:
     }
 };
 
-class Goat {
-    private:
-        int age;
-        string name;
-        string color;
-        string names[NAME_COUNT] = {
-            "Nanny McGoat",
-            "Billy the Kid",
-            "Butterscotch",
-            "Clover",
-            "Scruffy",
-            "Luna",
-            "Pippin",
-            "Marzipan",
-            "Tofu",
-            "Biscuit",
-            "Fig",
-            "Buckaroo",
-            "Willow",
-            "Peaches",
-            "Ziggy"
-        };
-        string colors[COLOR_COUNT] = {
-            "Snow White",
-            "Midnight Black",
-            "Chestnut Brown",
-            "Sandy Beige",
-            "Slate Gray",
-            "Honey Gold",
-            "Spotted Black and White",
-            "Rusty Red",
-            "Cloudy Gray",
-            "Cream",
-            "Hazel",
-            "Smoky Silver",
-            "Chocolate Brown",
-            "Ivory",
-        };
 
-    public:
-        Goat(){
-            srand(time(nullptr));
-
-            int nameTest = 0;
-            int colorTest = 0;
-
-            nameTest = rand() % NAME_COUNT;
-            colorTest = rand() % COLOR_COUNT;
-
-            cout << colorTest << endl;
-            cout << nameTest << endl;
-
-
-            name = names[rand() % NAME_COUNT];
-            
-            color = colors[rand() % COLOR_COUNT];
-        }
-
-        string getName() {return name;}
-        string getColor() {return color;}
-
-};
 
 // Driver program
 int main() {
     Goat bahh;
-    cout << bahh.getColor() << endl;
 
-    cout << bahh.getName() << endl;
+
 
     /*
         DoublyLinkedList list;
