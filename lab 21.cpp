@@ -174,9 +174,9 @@ public:
         Node* current = head;
         if (!current){
             cout << "Empty List" << endl;
+            return;
         } 
-
-        cout << "Backward:" << endl;
+        cout << endl;
 
         while (current) {
             cout << "\t";
@@ -193,9 +193,9 @@ public:
         Node* current = tail;
         if (!current){
             cout << "Empty List" << endl;
+            return;
         } 
-
-        cout << "Forward:" << endl;
+        cout << endl;
 
         while (current) {
             cout << "\t";
@@ -214,10 +214,10 @@ public:
             head = head->next;
             delete temp;
         }
+        head = nullptr;
+        tail = nullptr;
     }
 };
-
-
 
 // Driver program
 int main() {
